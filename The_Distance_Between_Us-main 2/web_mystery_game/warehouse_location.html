@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>搜索结果</title>
+	<style>
+		:root{--bg:#fff;--page-bg:#f6f7fb;--accent:#1a73e8;--muted:#6b7280}
+		html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Helvetica Neue',Arial}
+		body{background:var(--page-bg);color:#111}
+
+		/* Header / search area */
+		.wrap{max-width:980px;margin:36px auto;padding:0 18px}
+		.search-header{background:transparent;padding:36px 0;text-align:center}
+		.logo{font-weight:700;color:var(--accent);font-size:34px;letter-spacing:0.4px}
+		.sub{color:var(--muted);margin-top:6px}
+
+		.search-box{display:flex;justify-content:center;margin-top:22px}
+		.search-field{width:70%;max-width:740px;display:flex;border-radius:24px;border:1px solid #e6e8ee;background:#fff;box-shadow:0 1px 2px rgba(16,24,40,0.04)}
+		.search-field input{flex:1;padding:14px 18px;border:0;font-size:16px;border-radius:24px;outline:none}
+		.search-field button{background:transparent;border:0;padding:0 16px;color:var(--accent);font-weight:600;cursor:pointer}
+
+		/* Results */
+		.results{max-width:740px;margin:18px auto 120px}
+		.meta{color:var(--muted);font-size:13px;margin:6px 0 12px}
+		.result{padding:18px 14px;border-radius:6px;background:#fff;margin-bottom:14px;border:1px solid #eef0f6;transition:box-shadow 0.2s}
+		.result:hover{box-shadow:0 2px 8px rgba(16,24,40,0.08)}
+		.result a.title{color:var(--accent);font-size:18px;text-decoration:none;display:block;margin-bottom:4px}
+		.result a.title:hover{text-decoration:underline}
+		.result .url{color:#198038;font-size:13px;margin-top:6px;display:block}
+		.result .snippet{color:#374151;margin-top:8px;font-size:14px;line-height:1.5}
+		.result .address{background:#f0f9ff;border-left:3px solid var(--accent);padding:10px 12px;margin-top:10px;font-size:13px;border-radius:4px}
+		.result .address strong{color:#1e40af}
+
+		.noresult{padding:28px;text-align:center;color:var(--muted)}
+
+		.back-link{text-align:center;margin-top:24px}
+		.back-link a{color:var(--accent);text-decoration:none;font-size:14px}
+
+		@media (max-width:720px){
+			.search-field{width:92%}
+			.search-field input{padding:12px}
+			.logo{font-size:28px}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<header class="search-header" role="banner">
+			<div class="logo">Hoogle</div>
+			<div class="sub">搜索结果</div>
+
+			<div class="search-box">
+				<div class="search-field" role="search">
+					<input id="q" type="search" placeholder="请输入搜索关键词" aria-label="搜索关键词">
+					<button id="go">搜索</button>
+				</div>
+			</div>
+		</header>
+
+		<div class="results" id="results" aria-live="polite">
+			<div class="meta">找到约 6 条结果</div>
+
+
+			<article class="result">
+				<a class="title" href="#">如何选择靠谱的物流仓储服务？ - 知乎者也</a>
+				<span class="url">www.zhihu.com/question/387564829</span>
+				<p class="snippet">作为一个在物流行业工作了5年的从业者，我建议选择物流仓储公司时要重点考察这几点：1. 仓库的地理位置和交通便利性；2. 安保系统和监控设备；3. 仓储面积和...</p>
+			</article>
+
+			<article class="result">
+				<a class="title" href="#">【招聘】物流仓管员 月薪6000-8000 - 58同城</a>
+				<span class="url">bq.58.com/zpwuliucanguan/45678923x.shtml</span>
+				<p class="snippet">兴盛物流仓储有限公司招聘仓管员5名，要求：1. 有仓储管理经验优先；2. 能适应夜班；3. 工作认真负责。工作地点：青梧区槐安路附近。联系电话：139****8765</p>
+			</article>
+
+            <article class="result">
+				<a class="title" href="#">北桥恒通物流仓储1号仓</a>
+				<span class="url">www.bqht-logistics.com/warehouse/no1</span>
+				<p class="snippet">北桥恒通物流仓储有限公司1号仓库，提供专业的仓储配送服务，配备现代化的仓储设施和24小时安保系统。主营业务包括货物仓储、物流配送、供应链管理等。</p>
+				<div class="address">
+					<strong>📍 地址：</strong>北桥市旧港区临水街17号附2号
+				</div>
+                
+			</article>
+			<article class="result">
+				<a class="title" href="#">星港市加快物流产业转型升级 打造区域物流中心 - 星港日报</a>
+				<span class="url">www.bqrb.com/news/2025-07-15/logistics-upgrade.html</span>
+				<p class="snippet">2025年7月15日讯 记者从市发改委获悉，星港市将投入3亿元推动物流产业升级，重点支持青梧区物流园区建设智慧仓储系统。目前已有多家物流企业...</p>
+			</article>
+
+			<article class="result">
+				<a class="title" href="#">有在物流公司上班的吗？待遇怎么样？ - 求职吧 - 千度贴吧</a>
+				<span class="url">tieba.baidu.com/p/8765432109</span>
+				<p class="snippet">楼主：最近在考虑去那边的仓库工作，不知道待遇如何？ 2楼：我朋友在那上班，说是包吃住，不过要上夜班。3楼：工资还行吧，就是管理比较严...</p>
+			</article>
+
+			<article class="result">
+				<a class="title" href="easter_egg_taptap.html">TapTap_发现好游戏</a>
+				<span class="url">taptap.com</span>
+				<p class="snippet">TapTap 专为中国手游玩家打造的推荐高品质手游的分享社区。我们拥有超过 2 万款可玩游戏,超过 1 亿玩家...</p>
+			</article>
+		</div>
+
+		<div class="back-link">
+			<a href="javascript:history.back()">← 返回上一页</a>
+		</div>
+	</div>
+
+	<script>
+		const input = document.getElementById('q');
+		const go = document.getElementById('go');
+		
+		go.addEventListener('click', () => {
+			const query = input.value.trim();
+			if(query) {
+				// 简单的搜索逻辑，实际可以更复杂
+				console.log('搜索:', query);
+			}
+		});
+
+		input.addEventListener('keypress', (e) => {
+			if(e.key === 'Enter') {
+				go.click();
+			}
+		});
+	</script>
+</body>
+</html>
