@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>搜索 · 游戏线索</title>
+	<style>
+		:root{--bg:#fff;--page-bg:#f6f7fb;--accent:#1a73e8;--muted:#6b7280}
+		html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Helvetica Neue',Arial}
+		body{background:var(--page-bg);color:#111}
+
+		/* Header / search area */
+		.wrap{max-width:980px;margin:36px auto;padding:0 18px}
+		.search-header{background:transparent;padding:36px 0;text-align:center}
+		.logo{font-weight:700;color:var(--accent);font-size:34px;letter-spacing:0.4px}
+		.sub{color:var(--muted);margin-top:6px}
+
+		/* Results */
+		.results{max-width:740px;margin:18px auto 120px}
+		.meta{color:var(--muted);font-size:13px;margin:6px 0 12px}
+		.result{padding:18px 14px;border-radius:6px;background:#fff;margin-bottom:14px;border:1px solid #eef0f6}
+		.result .title{color:var(--accent);font-size:18px;text-decoration:none}
+		.result .url{color:#198038;font-size:13px;margin-top:6px;display:block}
+		.result .snippet{color:#374151;margin-top:8px;font-size:14px;line-height:1.5}
+
+		.noresult{padding:28px;text-align:center;color:var(--muted)}
+
+		.police-link{text-align:center;margin:60px 0 40px;padding:20px 0}
+		.police-link a{display:inline-block;padding:10px 24px;background:var(--accent);color:#fff;text-decoration:none;border-radius:6px;font-weight:500;font-size:13px;transition:opacity 0.3s;box-shadow:0 1px 4px rgba(26,115,232,0.15)}
+		.police-link a:hover{opacity:0.9}
+
+		.home-link{text-align:center;margin:20px 0 60px;padding:10px 0}
+		.home-link a{display:inline-block;padding:10px 24px;background:#fff;color:var(--accent);text-decoration:none;border-radius:6px;font-weight:500;font-size:13px;border:1px solid var(--accent);transition:all 0.3s}
+		.home-link a:hover{background:var(--accent);color:#fff}
+
+		@media (max-width:720px){
+			.logo{font-size:28px}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<header class="search-header" role="banner">
+			<div class="logo">Hoogle</div>
+			<div class="sub">搜索关键词</div>
+		</header>
+
+		<div class="results" id="results" aria-live="polite">
+			<div class="meta">1 条结果</div>
+			<div class="result">
+				<div class="title">Atbash 密码</div>
+				<div class="url">atbash.html</div>
+				<div class="snippet">
+					<p>Atbash 是一种简单的替换密码，其中字母表中的每个字母都被其在字母表中的“镜像”字母替换。具体来说，A 被 Z 替换，B 被 Y 替换，C 被 X 替换，以此类推，直到 M 被 N 替换。</p>
+					<h3>如何解码</h3>
+					<p>要解码 Atbash 密码，只需再次应用相同的替换规则，因为它是自己的逆运算。例如，Z 被 A 替换，Y 被 B 替换，以此类推。</p>
+					<p>您可以使用在线工具或手动替换字母来解码。</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="police-link">
+			<a href="police.html">我已掌握足够线索</a>
+		</div>
+
+		<div class="home-link">
+			<a href="search.html">返回搜索</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>搜索 · 游戏线索</title>
+	<style>
+		:root{--bg:#fff;--page-bg:#f6f7fb;--accent:#1a73e8;--muted:#6b7280}
+		html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Helvetica Neue',Arial}
+		body{background:var(--page-bg);color:#111}
+
+		/* Header / search area */
+		.wrap{max-width:980px;margin:36px auto;padding:0 18px}
+		.search-header{background:transparent;padding:36px 0;text-align:center}
+		.logo{font-weight:700;color:var(--accent);font-size:34px;letter-spacing:0.4px}
+		.sub{color:var(--muted);margin-top:6px}
+
+		.search-box{display:flex;justify-content:center;margin-top:22px}
+		.search-field{width:70%;max-width:740px;display:flex;border-radius:24px;border:1px solid #e6e8ee;background:#fff;box-shadow:0 1px 2px rgba(16,24,40,0.04)}
+		.search-field input{flex:1;padding:14px 18px;border:0;font-size:16px;border-radius:24px;outline:none}
+		.search-field button{background:transparent;border:0;padding:0 16px;color:var(--accent);font-weight:600;cursor:pointer}
+
+		/* Results */
+		.results{max-width:740px;margin:18px auto 120px}
+		.meta{color:var(--muted);font-size:13px;margin:6px 0 12px}
+		.result{padding:18px 14px;border-radius:6px;background:#fff;margin-bottom:14px;border:1px solid #eef0f6}
+		.result a.title{color:var(--accent);font-size:18px;text-decoration:none}
+		.result .url{color:#198038;font-size:13px;margin-top:6px;display:block}
+		.result .snippet{color:#374151;margin-top:8px;font-size:14px;line-height:1.5}
+
+		.noresult{padding:28px;text-align:center;color:var(--muted)}
+
+		.police-link{text-align:center;margin:60px 0 40px;padding:20px 0}
+		.police-link a{display:inline-block;padding:10px 24px;background:var(--accent);color:#fff;text-decoration:none;border-radius:6px;font-weight:500;font-size:13px;transition:opacity 0.3s;box-shadow:0 1px 4px rgba(26,115,232,0.15)}
+		.police-link a:hover{opacity:0.9}
+
+		.home-link{text-align:center;margin:20px 0 60px;padding:10px 0}
+		.home-link a{display:inline-block;padding:10px 24px;background:#fff;color:var(--accent);text-decoration:none;border-radius:6px;font-weight:500;font-size:13px;border:1px solid var(--accent);transition:all 0.3s}
+		.home-link a:hover{background:var(--accent);color:#fff}
+
+		@media (max-width:720px){
+			.search-field{width:92%}
+			.search-field input{padding:12px}
+			.logo{font-size:28px}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<header class="search-header" role="banner">
+			<div class="logo">Hoogle</div>
+				</div>
+			</div>
+		</header>
+
+		<div class="results" id="results" aria-live="polite">
+			<div class="meta">1 条结果</div>
+			<div class="result">
+				<div class="title">凯撒密码 (Caesar Cipher)</div>
+				<div class="url">ceasar.html</div>
+				<div class="snippet">
+					<p>凯撒密码是一种替换密码，其中明文中的每个字母都按照字母表向左或右移动固定数量的位置。例如，移位1位时，A会被B替换，B会被C替换，以此类推。</p>
+					<h3>如何解码</h3>
+					<p>要解码凯撒密码，您需要知道移位值。然后，将每个字母向前移位该数量。例如，如果移位为左3，D变为A，E变为B，等等。</p>
+					<p>您可以使用在线工具来解码，或者手动移位字母。常见的移位值包括3、13等。</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="police-link">
+			<a href="police.html">我已掌握足够线索</a>
+		</div>
+
+		<div class="home-link">
+			<a href="search.html">返回搜索</a>
+		</div>
+	</div>
+</body>
+</html>
