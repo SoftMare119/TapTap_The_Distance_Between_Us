@@ -21,6 +21,15 @@
 		.search-field input{flex:1;padding:14px 18px;border:0;font-size:16px;border-radius:24px;outline:none}
 		.search-field button{background:transparent;border:0;padding:0 16px;color:var(--accent);font-weight:600;cursor:pointer}
 
+		.history-toggle{text-align:center;margin-top:10px}
+		.history-toggle button{background:#fff;color:var(--accent);border:1px solid var(--accent);border-radius:6px;padding:8px 16px;font-size:13px;cursor:pointer;transition:all 0.3s}
+		.history-toggle button:hover{background:var(--accent);color:#fff}
+
+		.history-list{display:none;max-width:740px;margin:18px auto;background:#fff;border-radius:6px;border:1px solid #eef0f6;padding:18px}
+		.history-item{margin-bottom:8px}
+		.history-item a{color:var(--accent);text-decoration:none;font-size:14px}
+		.history-item a:hover{text-decoration:underline}
+
 		/* Results */
 		.results{max-width:740px;margin:18px auto 120px}
 		.meta{color:var(--muted);font-size:13px;margin:6px 0 12px}
@@ -58,9 +67,15 @@
 					<button id="go">搜索</button>
 				</div>
 			</div>
+
+			<div class="history-toggle">
+				<button id="toggle-history">查看搜索记录</button>
+			</div>
 		</header>
 
 		<div class="results" id="results" aria-live="polite"></div>
+
+		<div class="history-list" id="history-list"></div>
 
 		<div class="police-link">
 			<a href="police.html">我已掌握足够线索</a>
