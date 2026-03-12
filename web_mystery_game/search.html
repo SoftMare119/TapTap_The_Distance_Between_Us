@@ -21,15 +21,6 @@
 		.search-field input{flex:1;padding:14px 18px;border:0;font-size:16px;border-radius:24px;outline:none}
 		.search-field button{background:transparent;border:0;padding:0 16px;color:var(--accent);font-weight:600;cursor:pointer}
 
-		.history-toggle{text-align:center;margin-top:10px}
-		.history-toggle button{background:#fff;color:var(--accent);border:1px solid var(--accent);border-radius:6px;padding:8px 16px;font-size:13px;cursor:pointer;transition:all 0.3s}
-		.history-toggle button:hover{background:var(--accent);color:#fff}
-
-		.history-list{display:none;max-width:740px;margin:18px auto;background:#fff;border-radius:6px;border:1px solid #eef0f6;padding:18px}
-		.history-item{margin-bottom:8px}
-		.history-item a{color:var(--accent);text-decoration:none;font-size:14px}
-		.history-item a:hover{text-decoration:underline}
-
 		/* Results */
 		.results{max-width:740px;margin:18px auto 120px}
 		.meta{color:var(--muted);font-size:13px;margin:6px 0 12px}
@@ -68,9 +59,6 @@
 				</div>
 			</div>
 
-			<div class="history-toggle">
-				<button id="toggle-history">查看搜索记录</button>
-			</div>
 		</header>
 
 		<div class="results" id="results" aria-live="polite"></div>
@@ -117,63 +105,7 @@
 		const toggleHistory = document.getElementById('toggle-history');
 		const historyList = document.getElementById('history-list');
 
-		// 搜索历史管理
-		let searchHistory = JSON.parse(localStorage.getItem('searchHistory') || '[]');
-
-		function saveSearchHistory(query, items) {
-			if (items.length === 0) return; // 只记录有结果的搜索
-			
-			// 移除重复的关键词
-			searchHistory = searchHistory.filter(item => item.query !== query);
-			
-			// 添加新记录到开头
-			searchHistory.unshift({
-				query: query,
-				results: items.map(item => ({ title: item.title, href: item.href })),
-				timestamp: Date.now()
-			});
-			
-			// 限制历史记录数量
-			if (searchHistory.length > 10) {
-				searchHistory = searchHistory.slice(0, 10);
-			}
-			
-			localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
-		}
-
-		function renderHistory() {
-			historyList.innerHTML = '';
-			if (searchHistory.length === 0) {
-				historyList.innerHTML = '<div style="text-align:center;color:var(--muted)">暂无搜索记录</div>';
-				return;
-			}
-			
-			searchHistory.forEach(item => {
-				const historyItem = document.createElement('div');
-				historyItem.className = 'history-item';
-				historyItem.innerHTML = `
-					<strong>${escapeHtml(item.query)}</strong> (${item.results.length} 条结果)
-					<div style="margin-top:4px;">
-						${item.results.map(result => 
-							`<a href="${result.href}">${escapeHtml(result.title)}</a>`
-						).join(' | ')}
-					</div>
-				`;
-				historyList.appendChild(historyItem);
-			});
-		}
-
-		function toggleHistoryList() {
-			if (historyList.style.display === 'none' || historyList.style.display === '') {
-				renderHistory();
-				historyList.style.display = 'block';
-				toggleHistory.textContent = '隐藏搜索记录';
-			} else {
-				historyList.style.display = 'none';
-				toggleHistory.textContent = '查看搜索记录';
-			}
-		}
-
+	
 		function sanitize(t){return (t||'').trim();}
 		function isValid(t){ return t && t.length > 0; }
 
