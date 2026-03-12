@@ -114,6 +114,65 @@
 		const input = document.getElementById('q');
 		const go = document.getElementById('go');
 		const results = document.getElementById('results');
+		const toggleHistory = document.getElementById('toggle-history');
+		const historyList = document.getElementById('history-list');
+
+		// 搜索历史管理
+		let searchHistory = JSON.parse(localStorage.getItem('searchHistory') || '[]');
+
+		function saveSearchHistory(query, items) {
+			if (items.length === 0) return; // 只记录有结果的搜索
+			
+			// 移除重复的关键词
+			searchHistory = searchHistory.filter(item => item.query !== query);
+			
+			// 添加新记录到开头
+			searchHistory.unshift({
+				query: query,
+				results: items.map(item => ({ title: item.title, href: item.href })),
+				timestamp: Date.now()
+			});
+			
+			// 限制历史记录数量
+			if (searchHistory.length > 10) {
+				searchHistory = searchHistory.slice(0, 10);
+			}
+			
+			localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+		}
+
+		function renderHistory() {
+			historyList.innerHTML = '';
+			if (searchHistory.length === 0) {
+				historyList.innerHTML = '<div style="text-align:center;color:var(--muted)">暂无搜索记录</div>';
+				return;
+			}
+			
+			searchHistory.forEach(item => {
+				const historyItem = document.createElement('div');
+				historyItem.className = 'history-item';
+				historyItem.innerHTML = `
+					<strong>${escapeHtml(item.query)}</strong> (${item.results.length} 条结果)
+					<div style="margin-top:4px;">
+						${item.results.map(result => 
+							`<a href="${result.href}">${escapeHtml(result.title)}</a>`
+						).join(' | ')}
+					</div>
+				`;
+				historyList.appendChild(historyItem);
+			});
+		}
+
+		function toggleHistoryList() {
+			if (historyList.style.display === 'none' || historyList.style.display === '') {
+				renderHistory();
+				historyList.style.display = 'block';
+				toggleHistory.textContent = '隐藏搜索记录';
+			} else {
+				historyList.style.display = 'none';
+				toggleHistory.textContent = '查看搜索记录';
+			}
+		}
 
 		function sanitize(t){return (t||'').trim();}
 		function isValid(t){ return t && t.length > 0; }
@@ -156,6 +215,7 @@
 
 		go.addEventListener('click', searchOnce);
 		input.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); searchOnce(); } });
+		toggleHistory.addEventListener('click', toggleHistoryList);
 
 		// show empty state on load
 		results.innerHTML = '<div class="noresult">输入关键词并搜索，或浏览页面以获取线索。</div>';
